@@ -6,6 +6,7 @@ import { UserSignIn } from "../api";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../redux/reducers/userSlice";
 
+
 const Container = styled.div`
   width: 100%;
   max-width: 500px;
@@ -38,6 +39,7 @@ const SignIn = () => {
     }
     return true;
   };
+  
 
   const handelSignIn = async () => {
     setLoading(true);
@@ -75,14 +77,14 @@ const SignIn = () => {
           label="Email Address"
           placeholder="Enter your email address"
           value={email}
-          handelChange={(e) => setEmail(e.target.value)}
+          handleChange={(e) => setEmail(e.target.value)}
         />
         <TextInput
           label="Password"
           placeholder="Enter your password"
           password
           value={password}
-          handelChange={(e) => setPassword(e.target.value)}
+          handleChange={(e) => setPassword(e.target.value)}
         />
         <Button
           text="SignIn"

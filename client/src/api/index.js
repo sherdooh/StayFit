@@ -1,11 +1,35 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://fitnesstrack-vtv1.onrender.com/api/",
+  baseURL: "http://localhost:8080/api/",
 });
 
-export const UserSignUp = async (data) => API.post("/user/signup", data);
-export const UserSignIn = async (data) => API.post("/user/signin", data);
+// export const UserSignUp = async (data) => API.post("/user/signup", data);
+export const UserSignUp = async (data) => {
+  try {
+      console.log("Sending data:", data);
+      const response = await API.post("/user/signup", data);
+      console.log("API response:", response); // Log full API response
+      return response;
+  } catch (error) {
+      console.error("API error:", error); // Log any API errors
+      throw error;
+  }
+};
+
+
+// export const UserSignIn = async (data) => API.post("/user/signin", data);
+export const UserSignIn = async (data) => {
+  try {
+      const response = await API.post("/user/signin", data);
+      console.log("API response:", response); // Log full API response
+      return response;
+  } catch (error) {
+      console.error("API error:", error); // Log any API errors
+      throw error;
+  }
+};
+
 
 export const getDashboardDetails = async (token) =>
   API.get("/user/dashboard", {
